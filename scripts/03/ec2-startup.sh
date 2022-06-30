@@ -1,12 +1,18 @@
 #!/bin/bash
+su ec2-user
 curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
 sudo yum install -y nodejs
 sudo yum install -y git
-cd home/ec2-user
+echo "npm install yarn -g"
+sudo npm install yarn -g
+echo "end npm install yarn -g"
+cd ~
 git clone https://github.com/ryanmurakami/hbfl.git
 cd hbfl
-npm i
-npm run start
+echo "yarn"
+yarn
+echo "end yarn"
+yarn start
 
 # The above commands base64 encoded for entering into UserData
-# IyEvYmluL2Jhc2gKY3VybCAtLXNpbGVudCAtLWxvY2F0aW9uIGh0dHBzOi8vcnBtLm5vZGVzb3VyY2UuY29tL3NldHVwXzE2LnggfCBzdWRvIGJhc2ggLQpzdWRvIHl1bSBpbnN0YWxsIC15IG5vZGVqcwpzdWRvIHl1bSBpbnN0YWxsIC15IGdpdApjZCBob21lL2VjMi11c2VyCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vcnlhbm11cmFrYW1pL2hiZmwuZ2l0CmNkIGhiZmwKbnBtIGkKbnBtIHJ1biBzdGFydA==
+# IyEvYmluL2Jhc2gKc3UgZWMyLXVzZXIKY3VybCAtLXNpbGVudCAtLWxvY2F0aW9uIGh0dHBzOi8vcnBtLm5vZGVzb3VyY2UuY29tL3NldHVwXzE2LnggfCBzdWRvIGJhc2ggLQpzdWRvIHl1bSBpbnN0YWxsIC15IG5vZGVqcwpzdWRvIHl1bSBpbnN0YWxsIC15IGdpdAplY2hvICJucG0gaW5zdGFsbCB5YXJuIC1nIgpzdWRvIG5wbSBpbnN0YWxsIHlhcm4gLWcKZWNobyAiZW5kIG5wbSBpbnN0YWxsIHlhcm4gLWciCmNkIH4KZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9yeWFubXVyYWthbWkvaGJmbC5naXQKY2QgaGJmbAplY2hvICJ5YXJuIgp5YXJuCmVjaG8gImVuZCB5YXJuIgp5YXJuIHN0YXJ0
